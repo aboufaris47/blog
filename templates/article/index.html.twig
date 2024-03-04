@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	{{ article.title }}
+{% endblock %}
+{% block content %}
+	{# Titre de la page #}
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">{{ article.title }}</h1>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<p>
+			{{ article.content|nl2br }}
+		</p>
+	</div>
+{% endblock %}
+{% block stylesheets %}{% endblock %}

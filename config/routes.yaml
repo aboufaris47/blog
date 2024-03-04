@@ -1,3 +1,38 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+homepage:
+    path: /
+    controller: App\Controller\HomeController::index
+
+article_show:
+    path: /{id}
+    controller: App\Controller\ArticleController::index
+    methods: GET
+    requirements:
+        id: '\d+'
+
+article_add:
+    path: /add
+    controller: App\Controller\ArticleController::edit
+
+article_edit:
+    path: /edit/{id}
+    controller: App\Controller\ArticleController::edit
+    requirements:
+        id: '\d+'
+
+article_remove:
+    path: /remove/{id}
+    controller: App\Controller\ArticleController::remove
+    requirements:
+        id: '\d+'
+
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+
+app_logout:
+    path: /logout
+    controller: App\Controller\SecurityController::logout
+
+app_register:
+    path: /register
+    controller: App\Controller\RegistrationController::register

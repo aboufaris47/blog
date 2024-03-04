@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+{% block title %}Accueil
+{% endblock %}
+{% block content %}
+	<div
+		class="container-fluid">
+		{# Titre de la page #}
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Listing</h1>
+			</div>
+		</div>
+		<div class="row alert alert-warning" role="alert">
+			<div class="col-xs-9 col-sm-10"></div>
+			<div class="col-xs-3 col-sm-2">
+				<a href="{{ path('article_add') }}" role="button" class="btn btn-info text-right">
+					<i class="fa fa-plus fa-fw"></i>
+					Ajouter
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Titre</th>
+					<th scope="col">Contenu</th>
+					<th scope="col">Publié</th>
+					<th scope="col">Auteur</th>
+					<th scope="col">{# Bouton d'action - Supprimer #}</th>
+					<th scope="col">{# Bouton d'action - Modifier #}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for article in articles %}
+					<tr>
+						<th scope="row">
+							{{ article.id }}
+						</th>
+						<td>
+							{{ article.title }}
+						</td>
+						<td>
+							{{ article.content|nl2br }}
+						</td>
+						<td>
+							{{ article.isPublished ? 'Oui' : 'Non' }}
+						</td>
+						<td>
+							{{ article.author.username }}
+						</td>
+						<td>
+							<a href="{{ path('article_remove', {'id': article.id}) }}" role="button" class="btn btn-danger">Supprimer</a>
+						</td>
+						<td>
+							<a href="{{ path('article_edit', {'id': article.id}) }}" role="button" class="btn btn-info">Modifier</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
+{% block stylesheets %}{% endblock %}
